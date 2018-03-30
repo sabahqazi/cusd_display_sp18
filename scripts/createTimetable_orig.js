@@ -3,33 +3,16 @@ function TimeTable(msg) {
   //RouteDirections is an array of Route objects - all buses that stop at the defined StopID, grouped by route
   //Departures is an array of departure + arrival times for each bus in the specific route, within the Route object
   //RouteID is the route number, within the Route object
-
+	
   //for each route
-  var allRoutes = [11, 14, 17, 20, 21, 30, 31, 32, 36, 37, 40, 43, 51, 52, 53, 65, 67, 90];
-  
-  //console.log("888");
   for (i=0; i<msg[0].RouteDirections.length; i++) {
 
     var route = msg[0].RouteDirections[i]
     var numOfDeparts = route.Departures.length;
     var routeID = route.RouteId;
 
-	var routestr="route"+routeID.toString();
-	
-	 //var routestr="route"+"30";
-	console.log(routestr);
-	
-	/*allRoutes.push(routeID);
-	console.log("000");
-	console.log(allRoutes);
-	
-  }*/
-
-	
-	
-	
     //if there are buses running and the routeID = 30:
-    if (numOfDeparts != 0 && allRoutes.includes(routeID)) {
+    if (numOfDeparts != 0 && routeID == 30) {
 
       //for each entry in Departures (each bus)
       for (bus=0; bus<route.Departures.length; bus++) {
@@ -46,18 +29,15 @@ function TimeTable(msg) {
         console.log(formatted);
 
         //add the ETA to relevant ID in HTML
-        document.getElementById("route"+routeID.toString()).innerHTML += formatted + '<br>';
+        document.getElementById("route30").innerHTML += formatted + '<br>';
       }
 
-    } else if (numOfDeparts == 0 && allRoutes.includes(routeID)) {
+    } else if (numOfDeparts == 0 && routeID == 30) {
 
       console.log("There are no scheduled departures.");
-      document.getElementById("route"+routeID.toString()).innerHTML += 'There are no scheduled departures. ';
+      document.getElementById("route30").innerHTML += 'There are no scheduled departures. ';
     } 
-}
-}
 
-/*
     if (numOfDeparts != 0 && routeID == 32) {
 
       for (bus=0; bus<route.Departures.length; bus++) {

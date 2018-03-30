@@ -5,34 +5,36 @@ function TimeTable(msg) {
   //RouteID is the route number, within the Route object
 
   //for each route
-  var allRoutes = [11, 14, 17, 20, 21, 30, 31, 32, 36, 37, 40, 43, 51, 52, 53, 65, 67, 90];
+
+  var routeNo = [30,32,82,90]
+  //document.write(routeNo[0]); 
   
-  //console.log("888");
+  //console.log(msg);
+  
+  console.log("HELLO");
+  
+
   for (i=0; i<msg[0].RouteDirections.length; i++) {
 
     var route = msg[0].RouteDirections[i]
     var numOfDeparts = route.Departures.length;
     var routeID = route.RouteId;
-
-	var routestr="route"+routeID.toString();
 	
-	 //var routestr="route"+"30";
-	console.log(routestr);
+	var routelen = route.length;
 	
-	/*allRoutes.push(routeID);
-	console.log("000");
-	console.log(allRoutes);
+	//console.log("Inside");
 	
-  }*/
-
-	
-	
-	
+	//var routestr="route"+routeID.toString();
+	//for(j=0;j<routelen;j++) {
+		
+	//document.getElementById("
+	//console.log(j);
+	//console.log(route[j]);
     //if there are buses running and the routeID = 30:
-    if (numOfDeparts != 0 && allRoutes.includes(routeID)) {
+	  if (numOfDeparts != 0 && routeID == 30) {
 
       //for each entry in Departures (each bus)
-      for (bus=0; bus<route.Departures.length; bus++) {
+		for (bus=0; bus<route.Departures.length; bus++) {
 
         //get the ETA of the bus
         var eta = route.Departures[bus].ETA;
@@ -46,19 +48,16 @@ function TimeTable(msg) {
         console.log(formatted);
 
         //add the ETA to relevant ID in HTML
-        document.getElementById("route"+routeID.toString()).innerHTML += formatted + '<br>';
+        document.getElementById("route30").innerHTML += formatted + '<br>';
       }
 
-    } else if (numOfDeparts == 0 && allRoutes.includes(routeID)) {
+    } else if (numOfDeparts == 0 && routeID == 30) {
 
       console.log("There are no scheduled departures.");
-      document.getElementById("route"+routeID.toString()).innerHTML += 'There are no scheduled departures. ';
+      document.getElementById("route30").innerHTML += 'There are no scheduled departures. ';
     } 
-}
-}
-
-/*
-    if (numOfDeparts != 0 && routeID == 32) {
+	
+    if (numOfDeparts != 0 && routeID == 82) {
 
       for (bus=0; bus<route.Departures.length; bus++) {
 
@@ -74,14 +73,14 @@ function TimeTable(msg) {
         document.getElementById("route32").innerHTML += formatted + '<br>';
       }
 
-    } else if (numOfDeparts == 0 && routeID == 32) {
+    } else if (numOfDeparts == 0 && routeID == 82) {
 
       console.log("There are no scheduled departures.");
       document.getElementById("route32").innerHTML += 'There are no scheduled departures. ';
 
-    }
-
-    if (numOfDeparts != 0 && routeID == 82) {
+    } 
+	
+    if (numOfDeparts != 0 && routeID == routeNo[j]) {
 
       for (bus=0; bus<route.Departures.length; bus++) {
 
@@ -97,7 +96,7 @@ function TimeTable(msg) {
         document.getElementById("route82").innerHTML += formatted + '<br>';
       }
 
-    } else if (numOfDeparts == 0 && routeID == 82) {
+    } else if (numOfDeparts == 0 && routeID == routeNo[j]) {
 
       console.log("There are no scheduled departures.");
       document.getElementById("route82").innerHTML += 'There are no scheduled departures. ';
@@ -126,5 +125,30 @@ function TimeTable(msg) {
       document.getElementById("route90").innerHTML += 'There are no scheduled departures. ';
 
     }
+	
+
+    if (numOfDeparts != 0 && routeID == 51) {
+
+      for (bus=0; bus<route.Departures.length; bus++) {
+
+        var eta = route.Departures[bus].ETA;
+        console.log(eta);
+        var substring = eta.replace("/Date(", "");
+        substring = substring.replace("000-0500)/", "");
+        console.log(substring);
+
+        var t = new Date(substring * 1000);
+        var formatted = ('0' + t.getHours()).slice(-2) + ':' + ('0' + t.getMinutes()).slice(-2);
+        console.log(formatted);
+        document.getElementById("route51").innerHTML += formatted + '<br>';
+      }
+
+    } else if (numOfDeparts == 0 && routeID == 51) {
+
+      console.log("There are no scheduled departures.");
+      document.getElementById("route51").innerHTML += 'There are no scheduled departures. ';
+
+    }
   }
 }
+

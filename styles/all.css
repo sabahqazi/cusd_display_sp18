@@ -20,16 +20,18 @@ nav ul li {
     transition: ease-in-out 0.4s;
     padding-top:10px;
     padding-bottom:5px;
+	
 }
 
 nav ul li a {
     color:#0E0E0C;
     font-size:1.5em;
     text-decoration: none;
+	
 }
 
 nav li:hover {
-    background-color: #B0B7C3;
+    
 }
 
 #timetable {
@@ -43,14 +45,24 @@ nav li:hover {
 body {
     font-family: proxima-nova, sans-serif;
     font-style: normal;
+	#display: inline-block;
     font-weight: 100;
 }
+
+button{
+	padding-left:5em
+	#display:inline-block;
+}
+
+#div{
+	display: inline-block;
+}#
 
 ul {
     list-style-type: none;
     margin: 0 auto;
     padding: 0;
     overflow: hidden;
-    display: inline-block;
+	display: inline-block;
     vertical-align: top;   
 }
